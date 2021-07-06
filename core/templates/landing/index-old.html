@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Eroice - Share Your Stoires</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- Simplelightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Simplelightbox/2.1.0/simplelightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'landing/css/styles.css' %}" rel="stylesheet" />
+    <link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="data:image/png;base64,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">
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <style>
+        .navbar-brand>img {
+            width: 90px;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .navbar-brand>img {
+                width: 55px;
+            }
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="{% url 'landing' %}"><img src="https://i.imgur.com/C439pOO.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#genres">Genres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">Your Favorite Place To Share Your Stories</h1>
+                    <hr class="divider" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Eroice can help you improve your writing skills by getting feedbacks
+                        from other writers, Join Eroice and become a better writer!</p>
+                    <a class="btn btn-primary btn-xl" href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About-->
+    <section class="page-section bg-primary" id="genres">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">We've got what you need!</h2>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4">Explore various genres of writing, from horror to romance!</p>
+                    <a class="btn btn-light btn-xl" href="{% url 'signup' %}">Start Reading!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services-->
+    <section class="page-section" id="process">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">How it works</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Find Ideas</h3>
+                        <p class="text-muted mb-0">Start with something out of the ordinary.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Write</h3>
+                        <p class="text-muted mb-0">Start writing on Eroice. Edit your story and title it. Give Your Plot
+                            a Twist!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Publish</h3>
+                        <p class="text-muted mb-0">Upload your writing to Eroice.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Get reactions</h3>
+                        <p class="text-muted mb-0">Get feedback about your writing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call to action-->
+    <section class="page-section bg-dark text-white" id="pricing">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mb-4">All of that is for free!</h2>
+            <a class="btn btn-light btn-xl" href="{% url 'signup' %}">Sign Up Now!</a>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="bg-light py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="small text-center text-muted">Copyright &copy; 2021 - Eroice</div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Simplelightbox plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Simplelightbox/2.1.0/simplelightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'landing/js/scripts.js' %}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

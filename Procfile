@@ -1,0 +1,1 @@
+web: gunicorn eroice.wsgi --log-file -

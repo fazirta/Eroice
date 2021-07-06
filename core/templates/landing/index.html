@@ -1,0 +1,289 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eroice - Share Your Stoires</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        * {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+    </style>
+</head>
+
+<body class="pt-28" x-data="{ 'darkMode': false }" :class="{ 'dark': darkMode }">
+    <nav class="shadow-md fixed top-0 w-full bg-white dark:bg-gray-800" x-data="{ open: false }">
+        <div class="justify-between px-6 mx-auto border-b border-gray-200 dark:border-gray-700 hidden lg:flex">
+            <div>
+                <a class="flex space-x-3 items-center" href="#">
+                    <div
+                        class="flex items-center justify-center text-xs font-bold text-green-900 bg-green-400 dark:text-gray-900 dark:bg-green-500 rounded w-11 h-6">
+                        NEW
+                    </div>
+                    <h6
+                        class="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 hover:text-blue-900 transition py-3">
+                        Introducing Eroice Recommendations — a recommendation algorithm based on your interests
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </h6>
+                </a>
+            </div>
+            <div class="flex space-x-6 items-center text-sm text-gray-500 dark:text-gray-400 font-semibold">
+                <div
+                    class="flex bg-purple-400 dark:bg-yellow-400 py-1 px-2 rounded text-purple-900 dark:text-yellow-900">
+                    <button class="flex space-x-1 items-center" x-data="{ darkModeText : '' }"
+                        x-init="darkModeText = darkMode ? 'Light mode' : 'Dark mode'"
+                        x-on:click="darkMode = ! darkMode; darkModeText = darkMode ? 'Light mode' : 'Dark mode'">
+                        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                        </svg>
+                        <h1 x-text="darkModeText">
+                            Dark mode
+                        </h1>
+                    </button>
+                </div>
+                <a href="#">
+                    About
+                </a>
+                <a href="#">
+                    Social
+                </a>
+                <a href="#">
+                    Get Support
+                </a>
+            </div>
+        </div>
+        <div class="px-4 md:px-6 mx-auto">
+            <div class="flex justify-between">
+                <div class="flex space-x-14">
+                    <div class="flex items-center">
+                        <a class="py-5" href="{% url 'landing' %}">
+                            <img src="{% static 'img/logo.png' %}">
+                        </a>
+                    </div>
+                    <div
+                        class="hidden md:flex items-center space-x-10 text-gray-800 dark:text-gray-300 text-base font-semibold">
+                        <div class="py-5 hover:text-blue-800">
+                            <a href="#" class="flex items-center">
+                                Genres
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="py-5 hover:text-blue-800">
+                            <a href="#">
+                                Process
+                            </a>
+                        </div>
+                        <div class="py-5 hover:text-blue-800">
+                            <a href="#">
+                                Pricing
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-x-6 items-center font-bold hidden md:flex">
+                    <a class="rounded-full border border-blue-600 dark:border-blue-100 py-2 px-6 text-blue-600 dark:text-blue-100 hover:bg-blue-50 dark:hover:bg-gray-700 transition"
+                        href="{% url 'login' %}">
+                        Log In
+                    </a>
+                    <a class="rounded-full bg-blue-600 hover:bg-blue-500 dark:hover:bg-blue-800 transition py-2 px-6 text-white dark:text-gray-100"
+                        href="{% url 'signup' %}">
+                        Sign Up
+                    </a>
+                </div>
+                <div class="flex md:hidden items-center">
+                    <button x-on:click="open = ! open">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-10 md:hidden" x-show="open">
+            <div class="text-gray-800 text-base font-semibold">
+                <div class="py-4 hover:text-blue-800">
+                    <a href="#" class="flex items-center">
+                        Genres
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="py-4 hover:text-blue-800">
+                    <a href="#" class="flex items-center">
+                        Process
+                    </a>
+                </div>
+                <div class="pt-4 pb-8 hover:text-blue-800">
+                    <a href="#" class="flex items-center">
+                        Pricing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- HERO -->
+    <div class="flex justify-between pb-10 px-4 lg:px-0 dark:bg-gray-900">
+        <div class="pt-4 md:pt-20 mx-auto lg:mx-32 lg:min-w-max">
+            <div class="mb-10 max-w-md">
+                <h1 class="text-6xl font-bold mb-8 dark:text-white">
+                    Share Your Stories
+                </h1>
+                <p class="text-2xl text-gray-900 dark:text-gray-50">
+                    Improve your writing skills by getting feedbacks from other writers.
+                </p>
+            </div>
+            <hr class="w-20 border-t border-gray-300 dark:border-gray-600 mb-6">
+            <div>
+                <form method="POST" action="" class="text-sm" x-data="{ value: '' }">
+                    {% csrf_token %}
+                    <input type="hidden" autofocus="true" />
+                    <div class="rounded-xl shadow-lg hover:shadow-xl transition px-4 pb-5 pt-2 mb-3 max-w-md mx-auto dark:bg-gray-800 dark:text-white"
+                        @click="$refs.usernameInput.focus()">
+                        <label class="block text-gray-500 dark:text-gray-400">
+                            {{ form.username.label }}
+                        </label>
+                        {{ form.username }}
+                    </div>
+                    <div class="rounded-xl shadow-lg hover:shadow-xl transition px-4 pb-5 pt-2 mb-3 max-w-md mx-auto dark:bg-gray-800 dark:text-white"
+                        @click="$refs.emailInput.focus()">
+                        <label class="block text-gray-500 dark:text-gray-400">
+                            {{ form.email.label }}
+                        </label>
+                        {{ form.email }}
+                    </div>
+                    <div class="rounded-xl shadow-lg hover:shadow-xl transition px-4 pb-5 pt-2 mb-3 max-w-md mx-auto dark:bg-gray-800 dark:text-white"
+                        @click="$refs.password1Input.focus()">
+                        <label class="block text-gray-500 dark:text-gray-400">
+                            {{ form.password1.label }}
+                        </label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="rounded-xl shadow-lg hover:shadow-xl transition px-4 pb-5 pt-2 mb-8 max-w-md mx-auto dark:bg-gray-800 dark:text-white"
+                        @click="$refs.password2Input.focus()">
+                        <label class="block text-gray-500 dark:text-gray-400">
+                            {{ form.password2.label }}
+                        </label>
+                        {{ form.password2 }}
+                    </div>
+                    <button
+                        class="font-bold bg-blue-600 hover:bg-blue-700 w-full lg:w-48 text-center text-white text-lg py-3 rounded-full mb-5 transition"
+                        type="submit">
+                        Join Eroice
+                    </button>
+                    <div>
+                        <h1 class="text-gray-500 dark:text-gray-400">
+                            By signing up you agree to our <a
+                                class="underline hover:text-blue-900 dark:hover:text-blue-500 transition" href="#">terms
+                                of service.</a>
+                        </h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="hidden lg:block" style="width: 100vw;">
+            <img class="float-right object-cover"
+                style="border-bottom-left-radius: 240px; height: 640px; width: 100%; min-width: 975px;"
+                src="{% static 'img/hero.jpg' %}">
+        </div>
+    </div>
+    <!-- HOW EROICE WORKS -->
+    <div class="w-full py-28 bg-blue-50 dark:bg-gray-800 px-4 lg:px-0">
+        <div class="text-center">
+            <h1 class="text-4xl text-blue-900 dark:text-blue-50 font-bold mb-6">
+                How Eroice Works
+            </h1>
+            <p class="text-xl text-blue-800 dark:text-blue-100">
+                Get your story discovered through the power of technology on Eroice.
+            </p>
+        </div>
+        <div
+            class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-10 max-w-md lg:max-w-none mx-auto justify-center mt-24 text-blue-900 dark:text-blue-50">
+            <div class="flex">
+                <div>
+                    <h1 class="font-bold text-9xl">
+                        1
+                    </h1>
+                </div>
+                <div class="flex items-center max-w-xs ml-6">
+                    <div>
+                        <h1 class="font-bold text-2xl">
+                            Write
+                        </h1>
+                        <h2 class="text-xl">
+                            Start writing on Eroice. Edit your story and title it. Give Your Plot a Twist!
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <h1 class="font-bold text-9xl">
+                        2
+                    </h1>
+                </div>
+                <div class="flex items-center max-w-xs ml-6">
+                    <div>
+                        <h1 class="font-bold text-2xl">
+                            Publish
+                        </h1>
+                        <h2 class="text-xl">
+                            Upload your writing to Eroice.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <h1 class="font-bold text-9xl">
+                        3
+                    </h1>
+                </div>
+                <div class="flex items-center max-w-xs ml-6">
+                    <div>
+                        <h1 class="font-bold text-2xl">
+                            Get Reactions
+                        </h1>
+                        <h2 class="text-xl">
+                            Get feedback about your writing.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{% static 'landing/js/script.js' %}"></script>
+</body>
+
+</html>
